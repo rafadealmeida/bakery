@@ -12,64 +12,74 @@
   }
   ```
 */
+
+import donuts from '../../../public/imagens/deliciosos-donuts.png';
+import burguer from '../../../public/imagens/burguer.png';
+import pizza from '../../../public/imagens/pizza.png';
+import massa from '../../../public/imagens/massa-folhada.png';
+import frango from '../../../public/imagens/frango.png';
+import cupcake from '../../../public/imagens/cupcake.png';
+import Image from 'next/image';
+
 const products = [
-  {
-    id: 1,
-    name: 'Earthen Bottle',
-    href: '#',
-    price: '$48',
-    imageSrc:
-      'https://tailwindui.com/plus/img/ecommerce-images/category-page-04-image-card-01.jpg',
-    imageAlt:
-      'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
-  },
   {
     id: 2,
     name: 'Nomad Tumbler',
+    gradient: 'bg-gradient-to-b from-orange-100 from-60%',
     href: '#',
     price: '$35',
-    imageSrc:
-      'https://tailwindui.com/plus/img/ecommerce-images/category-page-04-image-card-02.jpg',
+    imageSrc: burguer,
     imageAlt:
       'Olive drab green insulated bottle with flared screw lid and flat top.',
   },
   {
+    id: 1,
+    name: 'Earthen Bottle',
+    gradient: 'bg-gradient-to-b from-pink-100 from-60%',
+    href: '#',
+    price: '$48',
+    imageSrc: donuts,
+    imageAlt:
+      'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
+  },
+  {
     id: 3,
     name: 'Focus Paper Refill',
+    gradient: 'bg-gradient-to-b from-[#ECE3D1] from-60%',
     href: '#',
     price: '$89',
-    imageSrc:
-      'https://tailwindui.com/plus/img/ecommerce-images/category-page-04-image-card-03.jpg',
+    imageSrc: pizza,
     imageAlt:
       'Person using a pen to cross a task off a productivity paper card.',
   },
   {
-    id: 4,
+    id: 6,
     name: 'Machined Mechanical Pencil',
+    gradient: 'bg-gradient-to-b from-purple-100 from-60%',
     href: '#',
     price: '$35',
-    imageSrc:
-      'https://tailwindui.com/plus/img/ecommerce-images/category-page-04-image-card-04.jpg',
+    imageSrc: cupcake,
     imageAlt:
       'Hand holding black machined steel mechanical pencil with brass tip and top.',
   },
+
   {
     id: 5,
     name: 'Machined Mechanical Pencil',
+    gradient: 'bg-gradient-to-b from-amber-100 from-60%',
     href: '#',
     price: '$35',
-    imageSrc:
-      'https://tailwindui.com/plus/img/ecommerce-images/category-page-04-image-card-04.jpg',
+    imageSrc: frango,
     imageAlt:
       'Hand holding black machined steel mechanical pencil with brass tip and top.',
   },
   {
-    id: 6,
+    id: 4,
     name: 'Machined Mechanical Pencil',
+    gradient: 'bg-gradient-to-b from-red-100 from-60%',
     href: '#',
     price: '$35',
-    imageSrc:
-      'https://tailwindui.com/plus/img/ecommerce-images/category-page-04-image-card-04.jpg',
+    imageSrc: massa,
     imageAlt:
       'Hand holding black machined steel mechanical pencil with brass tip and top.',
   },
@@ -86,11 +96,15 @@ export default function DonutsGrid() {
         <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-8">
           {products.map((product) => (
             <a key={product.id} href={product.href} className="group">
-              <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
-                <img
-                  alt={product.imageAlt}
+              <div
+                className={`aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-2xl ${product.gradient} xl:aspect-h-8 xl:aspect-w-7`}
+              >
+                <Image
                   src={product.imageSrc}
-                  className="h-full w-full object-cover object-center group-hover:opacity-75"
+                  width={500}
+                  height={500}
+                  alt={product.imageAlt}
+                  className="min-h-[500px] max-h-[500px] w-full object-contain object-center group-hover:opacity-75"
                 />
               </div>
               <h3 className="mt-4 text-sm text-gray-700">{product.name}</h3>

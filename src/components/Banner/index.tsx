@@ -1,5 +1,3 @@
-import { Button, Card } from 'flowbite-react';
-import donuts from '../../../public/imagens/deliciosos-donuts.png';
 import Image from 'next/image';
 
 export default function Banner() {
