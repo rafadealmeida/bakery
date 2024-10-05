@@ -1,12 +1,13 @@
-import Banner from '@/components/Banner';
+import BannerHome from '@/components/BannerHome';
+import BannerMiddle from '@/components/BannerMiddle';
 import DonutsGrid from '@/components/DonutsGrid';
-import Image from 'next/image';
 
 export default function Home() {
   return (
     <section className="min-h-screen flex flex-col justify-between">
-      <Banner />
+      <BannerHome />
       <DonutsGrid />
+      <BannerMiddle />
     </section>
   );
 }
