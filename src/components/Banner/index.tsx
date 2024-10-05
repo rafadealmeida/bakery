@@ -1,10 +1,11 @@
 import Image from 'next/image';
+import { ReactNode } from 'react';
 
-export default function Banner() {
+export const BannerRoot = ({ children }: { children: ReactNode }) => {
   return (
     <div className="bg-zinc-900 py-0.5">
       <div className="mx-auto max-w-7xl sm:px-6 lg:px-8 h-min">
-        <div className="relative isolate overflow-hidden bg-zinc-900 px-6 pt-16 shadow-2xl sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0">
+        <div className=" flex flex-row relative isolate overflow-hidden bg-zinc-900 px-6 pt-16 shadow-2xl sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0">
           <svg
             viewBox="0 0 1024 1024"
             aria-hidden="true"
@@ -24,44 +25,58 @@ export default function Banner() {
               </radialGradient>
             </defs>
           </svg>
-          <div className="mx-auto max-w-md text-center lg:mx-0 lg:flex-auto lg:py-32 lg:text-left">
-            <p className="mt-6 text-lg leading-8 text-gray-300 uppercase">
-              The special taste
-            </p>
-            <div className="d-flex flex-col">
-              <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-                Get Your <br />
-                Own Bite of
-              </h2>
-              <h2 className="text-3xl font-bold tracking-tight text-pink-500 sm:text-4xl">
-                Safisfaction
-              </h2>
-            </div>
-            <p className="mt-6 text-lg leading-8 text-gray-300">
-              Cosmetics designed for skin care can be used to cleanse, exfoliate
-              and protect the skin, as well as replenishing it, by the use of
-              cleansers, toners, serums etc.
-            </p>
-            <div className="mt-10 flex items-center justify-center gap-x-6 lg:justify-start ">
-              <a
-                href="#"
-                className="bg-pink-600 text-white py-2.5 px-5 text-sm font-semibold  shadow-sm hover:bg-pink-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-900"
-              >
-                Order Now
-              </a>
-            </div>
-          </div>
-          <div className="relative mt-16 h-80 lg:mt-8">
-            <Image
-              src="/imagens/deliciosos-donuts.png"
-              width={500}
-              height={500}
-              alt="Picture of the author"
-            />
-          </div>
+          {children}
         </div>
       </div>
       <hr className="h-1 border-t-0  bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#e9357a] to-[#a41b4f]" />
     </div>
   );
-}
+};
+
+export const BannerImage = ({
+  imageSrc,
+  imageAlt,
+  imageWidth = 500,
+  imageHeight = 500,
+}: {
+  imageSrc: string;
+  imageAlt: string;
+  imageWidth?: number;
+  imageHeight?: number;
+}) => {
+  return (
+    <div className="relative mt-16 h-80 lg:mt-8">
+      <Image
+        src={imageSrc}
+        width={imageWidth}
+        height={imageHeight}
+        alt={imageAlt}
+      />
+    </div>
+  );
+};
+
+export const BannerContent = ({
+  children,
+  direction = 'r',
+}: {
+  children: ReactNode;
+  direction?: 'l' | 'r';
+}) => {
+  return (
+    <div className="mx-auto max-w-md text-center lg:mx-0 lg:flex-auto lg:py-32 lg:text-left">
+      {children}
+    </div>
+  );
+};
+
+export const BannerButton = ({ children }: { children: ReactNode }) => {
+  return <div className="mt-6">{children}</div>;
+};
+
+export const Banner = {
+  Root: BannerRoot,
+  Image: BannerImage,
+  Content: BannerContent,
+  Button: BannerButton,
+};
