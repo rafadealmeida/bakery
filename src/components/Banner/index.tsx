@@ -38,6 +38,7 @@ export const BannerRoot = ({
             </defs>
           </svg>
           {children}
+          {children}
         </div>
       </div>
       <hr className="h-1 border-t-0  bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#e9357a] to-[#a41b4f]" />
