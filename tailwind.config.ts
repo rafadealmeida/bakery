@@ -25,5 +25,10 @@ const config: Config = {
     },
   },
   plugins: [],
+  safelist: [
+    {
+      pattern: /bg-gradient-to-b|from-/,
+    },
+  ],
 };
 export default config;

@@ -5,9 +5,11 @@ import classNames from 'classnames';
 export const BannerRoot = ({
   children,
   className = '',
+  withCicleGradient = true,
 }: {
   children: ReactNode;
   className?: string;
+  withCicleGradient?: boolean;
 }) => {
   return (
     <div className={classNames('bg-zinc-900 py-0.5', className)}>
@@ -18,30 +20,33 @@ export const BannerRoot = ({
             className,
           )}
         >
-          <svg
-            viewBox="0 0 1024 1024"
-            aria-hidden="true"
-            className="absolute left-1/2 top-1/2 -z-10 h-[64rem] w-[64rem] -translate-y-1/2 [mask-image:radial-gradient(closest-side,white,transparent)] sm:left-full sm:-ml-80 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2 lg:translate-y-0"
-          >
-            <circle
-              r={512}
-              cx={512}
-              cy={512}
-              fill="url(#759c1415-0410-454c-8f7c-9a820de03641)"
-              fillOpacity="0.7"
-            />
-            <defs>
-              <radialGradient id="759c1415-0410-454c-8f7c-9a820de03641">
-                <stop stopColor="#e9357a" />
-                <stop offset={1} stopColor="#a41b4f" />
-              </radialGradient>
-            </defs>
-          </svg>
-          {children}
+          {withCicleGradient && (
+            <svg
+              viewBox="0 0 1024 1024"
+              aria-hidden="true"
+              className="absolute left-1/2 top-1/2 -z-10 h-[64rem] w-[64rem] -translate-y-1/2 [mask-image:radial-gradient(closest-side,white,transparent)] sm:left-full sm:-ml-80 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2 lg:translate-y-0"
+            >
+              <circle
+                r={512}
+                cx={512}
+                cy={512}
+                fill="url(#759c1415-0410-454c-8f7c-9a820de03641)"
+                fillOpacity="0.7"
+              />
+              <defs>
+                <radialGradient id="759c1415-0410-454c-8f7c-9a820de03641">
+                  <stop stopColor="#e9357a" />
+                  <stop offset={1} stopColor="#a41b4f" />
+                </radialGradient>
+              </defs>
+            </svg>
+          )}
           {children}
         </div>
       </div>
-      <hr className="h-1 border-t-0  bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#e9357a] to-[#a41b4f]" />
+      {withCicleGradient && (
+        <hr className="h-1 border-t-0  bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#e9357a] to-[#a41b4f]" />
+      )}
     </div>
   );
 };
@@ -52,12 +57,14 @@ export const BannerImage = ({
   imageWidth = 500,
   imageHeight = 500,
   className = '',
+  classNameImage = '',
 }: {
   imageSrc: string;
   imageAlt: string;
   imageWidth?: number;
   imageHeight?: number;
   className?: string;
+  classNameImage?: string;
 }) => {
   return (
     <div className={classNames('relative mt-16 h-80 lg:mt-8', className)}>
@@ -66,6 +73,7 @@ export const BannerImage = ({
         width={imageWidth}
         height={imageHeight}
         alt={imageAlt}
+        className={classNames('object-contain', className)}
       />
     </div>
   );

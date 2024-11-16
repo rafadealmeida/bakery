@@ -4,15 +4,15 @@ import { Banner } from '../Banner';
 
 export default function BannerMiddle() {
   return (
-    <Banner.Root className="items-center">
-      <div className="relative max-h-fit flex items-center justify-center">
+    <Banner.Root className="items-center lg\:px-0 justify-between bg-gradient-to-br from-[#FD2669] to-pink-[#401321] to-80%">
+      <div className="relative h-1/3 flex items-center justify-center">
         <div className="relative">
           <Banner.Image
             imageSrc="/imagens/cupcake.png"
             imageAlt="Delicious Donuts"
-            className="z-10 h-30"
+            className="z-10 mt-0 lg:mt-0"
             imageWidth={300}
-            imageHeight={300}
+            imageHeight={200}
           />
 
           <div className="absolute inset-0 bg-white/30 backdrop-blur-md border border-white">

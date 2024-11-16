@@ -4,7 +4,7 @@ interface ButtonGradientProps {
   children: string;
   link?: string;
   className?: string;
-  variant?: 'primary' | 'secondary';
+  variant?: 'primary' | 'secondary' | 'goshtPink';
 }
 
 export const ButtonGradient = ({
@@ -21,6 +21,9 @@ export const ButtonGradient = ({
 
       'border-2 border-gray-50 text-gray-50 hover:border-gray-200 hover:text-gray-200 focus-visible:outline-gray-50':
         variant === 'secondary',
+
+      'border-2 border-pink-500 text-pink-500 hover:border-pink-700 hover:text-pink-700 focus-visible:outline-pink-500':
+        variant === 'goshtPink',
     },
     className,
   );
